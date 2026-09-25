@@ -4,15 +4,15 @@ class Boswell < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/timche/boswell/releases/download/v0.2.1/boswell-aarch64-apple-darwin.tar.gz"
-      sha256 "5d33a3ec4c681745f075f4b5d0668c1aa00d7fd2f2a3ae67f9381b0844b6fc68"
+      url "https://github.com/timche/boswell/releases/download/v0.2.2/boswell-aarch64-apple-darwin.tar.gz"
+      sha256 "368fa3ac07532bb79a9191ce6e3bfd2ed3dee0732bb5c38c7be6d4e3f91b4cd4"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/timche/boswell/releases/download/v0.2.1/boswell-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "0ac532605d1f1764f439604af6eb7d75b62f545869b0e0cdc276089d898478d1"
+      url "https://github.com/timche/boswell/releases/download/v0.2.2/boswell-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "bbe2a96b4ff7a683cce3bed5fcd8136cf703673bdd2c188da4f05bd897223ff7"
     end
   end
 
