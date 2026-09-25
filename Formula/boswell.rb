@@ -1,5 +1,5 @@
 class Boswell < Formula
-  desc "Daemon that watches git repositories"
+  desc "Daemon that watches git repositories and commits and pushes what changes"
   homepage "https://github.com/timche/boswell"
 
   on_macos do
