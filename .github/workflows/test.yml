@@ -1,0 +1,38 @@
+name: Test
+
+on: push
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        # macos-latest is Apple Silicon and ubuntu-latest is x86-64, which are
+        # the two platforms the formulae carry binaries for.
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+
+      # Homebrew is preinstalled on both runners, on Linux under /home/linuxbrew
+      # and not always on PATH.
+      - name: Put brew on PATH
+        run: |
+          if ! command -v brew >/dev/null; then
+            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+            echo "$HOMEBREW_PREFIX/bin" >> "$GITHUB_PATH"
+          fi
+
+      # Copied into place rather than tapped from GitHub, so a push is tested
+      # before anyone can install it.
+      - name: Tap this checkout
+        run: |
+          tap="$(brew --repository)/Library/Taps/timche/homebrew-tap"
+          mkdir -p "$(dirname "$tap")"
+          cp -R . "$tap"
+
+      - run: brew install timche/tap/boswell
+
+      - run: brew test boswell
+
+      - run: brew audit --formula timche/tap/boswell
