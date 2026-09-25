@@ -1,7 +1,6 @@
 class Boswell < Formula
   desc "Daemon that watches git repositories and commits and pushes what changes"
   homepage "https://github.com/timche/boswell"
-  version "0.2.1"
 
   on_macos do
     on_arm do
